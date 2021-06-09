@@ -136,3 +136,4 @@
 - Defined by the keyword stream
   - Define both the request, and the response messages, but with the keyword in both the request and the response
 #### GreetEveryone API Definition
+#### Bi-Directional Streaming API Server Implementation
