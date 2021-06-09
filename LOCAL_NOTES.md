@@ -124,3 +124,14 @@
 #### Client Streaming API Client Implementation - Part 1 - Refactoring
 #### Client Streaming API Client Implementation - Part 2 - Implementation
 #### [Exercise/Solution] ComputeAverage API
+
+##### Section 8: [Hands-On] gRPC Bi-Directional Streaming
+#### What's a Bi-Directional Streaming API?
+- Bi Directional (bi-di) Streaming RPC is a new kind of API enabled by HTTP/2. 
+  - The client sends many messages, and the server responds with many messages. The number does not have to match.
+    - Well suited for
+      - when the client and the server needs to send a lot of data asynchronously
+      - "Chat/Gossip" protocol
+      - For long term connections
+- Defined by the keyword stream
+  - Define both the request, and the response messages, but with the keyword in both the request and the response
