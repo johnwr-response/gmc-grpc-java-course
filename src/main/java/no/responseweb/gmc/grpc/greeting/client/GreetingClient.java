@@ -1,6 +1,9 @@
 package no.responseweb.gmc.grpc.greeting.client;
 
-import com.proto.dummy.*;
+import com.proto.greet.GreetRequest;
+import com.proto.greet.GreetResponse;
+import com.proto.greet.GreetServiceGrpc;
+import com.proto.greet.Greeting;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
