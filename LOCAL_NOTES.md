@@ -103,3 +103,4 @@
         - when the server needs to push data to clients without the need for requests (live feeds, chats, etc)
 - Defined by the keyword stream
   - Define both the request, and the response messages, but with the keyword in the response 
+#### GreetManyTimes API Definition
