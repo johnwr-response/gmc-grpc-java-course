@@ -2,8 +2,6 @@ package no.responseweb.gmc.grpc.calculator.client;
 
 import com.proto.calculator.CalculatorServiceGrpc;
 import com.proto.calculator.PrimeNumberDecompositionRequest;
-import com.proto.calculator.SumRequest;
-import com.proto.calculator.SumResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 

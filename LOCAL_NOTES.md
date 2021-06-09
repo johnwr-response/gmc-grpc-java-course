@@ -121,3 +121,4 @@
   - Define both the request, and the response messages, but with the keyword in the request
 #### LongGreet API Definition
 #### Client Streaming API Server Implementation
+#### Client Streaming API Client Implementation - Part 1 - Refactoring
