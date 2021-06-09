@@ -81,3 +81,11 @@
   - Run gradle task other:generateProto. Make sure the files has been generated under build/generated
 #### Server Setup Boilerplate Code
 #### Client Setup Boilerplate Code
+
+### Section 5: [Hands-On] gRPC Unary
+#### What’s a Unary API?
+- Unary RPC calls are basic request/response. The client sends one message, and the server responds with one message
+  - Very well suited when data is small
+  - The recommended approach is to start with unary, and expand to streaming API when performance is an issue
+- Define Unary calls using Protocol Buffers
+  - Define both the request, and the response messages 
