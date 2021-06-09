@@ -106,3 +106,4 @@
 #### GreetManyTimes API Definition
 #### Server Streaming API Server Implementation
 #### Server Streaming API Client Implementation
+#### [Exercise/Solution] PrimeNumberDecomposition API
