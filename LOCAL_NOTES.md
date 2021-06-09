@@ -120,3 +120,4 @@
 - Defined by the keyword stream
   - Define both the request, and the response messages, but with the keyword in the request
 #### LongGreet API Definition
+#### Client Streaming API Server Implementation
