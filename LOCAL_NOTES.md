@@ -93,3 +93,13 @@
 #### Unary API Server Implementation
 #### Unary API Client Implementation
 #### [Exercise/Solution] Sum API
+
+### Section 6: [Hands-On] gRPC Server Streaming
+#### What's a Server Streaming API?
+- Server Streaming RPC is a new kind of API enabled by HTTP/2. 
+    - The client sends one message, and the server responds with a stream of messages. Possibly infinite.
+    - Well suited for 
+        - when the server needs to send a lot of data (big data)
+        - when the server needs to push data to clients without the need for requests (live feeds, chats, etc)
+- Defined by the keyword stream
+  - Define both the request, and the response messages, but with the keyword in the response 
