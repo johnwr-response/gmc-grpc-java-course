@@ -80,3 +80,4 @@
 #### Dummy Service Code Generation
   - Run gradle task other:generateProto. Make sure the files has been generated under build/generated
 #### Server Setup Boilerplate Code
+#### Client Setup Boilerplate Code
