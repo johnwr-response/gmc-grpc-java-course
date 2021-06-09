@@ -107,3 +107,15 @@
 #### Server Streaming API Server Implementation
 #### Server Streaming API Client Implementation
 #### [Exercise/Solution] PrimeNumberDecomposition API
+
+### Section 7: [Hands-On] gRPC Client Streaming
+#### What's a Client Streaming API?
+- Client Streaming RPC is a new kind of API enabled by HTTP/2. 
+  - The client sends many messages, and the server responds with one messages.
+    - It is up to the server when to send response back.
+    - Well suited for
+      - when the client needs to send a lot of data (big data)
+      - when the server processing is expensive and should happen as the client sends data (can start immediately once the client starts sending the data)
+      - when the client needs to push data to clients without the need for response
+- Defined by the keyword stream
+  - Define both the request, and the response messages, but with the keyword in the request
