@@ -105,3 +105,4 @@
   - Define both the request, and the response messages, but with the keyword in the response 
 #### GreetManyTimes API Definition
 #### Server Streaming API Server Implementation
+#### Server Streaming API Client Implementation
