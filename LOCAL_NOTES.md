@@ -123,3 +123,4 @@
 #### Client Streaming API Server Implementation
 #### Client Streaming API Client Implementation - Part 1 - Refactoring
 #### Client Streaming API Client Implementation - Part 2 - Implementation
+#### [Exercise/Solution] ComputeAverage API
