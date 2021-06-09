@@ -138,3 +138,4 @@
 #### GreetEveryone API Definition
 #### Bi-Directional Streaming API Server Implementation
 #### Bi-Directional Streaming API Client Implementation
+#### [Exercise/Solution] FindMaximum API
