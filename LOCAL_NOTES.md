@@ -89,3 +89,4 @@
   - The recommended approach is to start with unary, and expand to streaming API when performance is an issue
 - Define Unary calls using Protocol Buffers
   - Define both the request, and the response messages 
+#### Greet API Definition
