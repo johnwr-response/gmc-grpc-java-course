@@ -159,3 +159,6 @@
 #### [Theory] SSL Security
 - All gRPC calls in production should be running with encryption using SSL certificates. This is the default behaviour.
 - gRPC support both 1-way verification (Encryption) and 2-way verification (Authentication)
+#### [Hands-On] SSL Security
+- [https://github.com/grpc/grpc-java/blob/master/SECURITY.md](https://github.com/grpc/grpc-java/blob/master/SECURITY.md)
+- [https://grpc.io/docs/guides/auth/](https://grpc.io/docs/guides/auth/)
