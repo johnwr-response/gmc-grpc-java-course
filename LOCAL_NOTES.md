@@ -147,3 +147,11 @@
   - [https://avi.im/grpc-errors/](https://avi.im/grpc-errors/)
   - Use metadata context to return extra information on top of an error code
 #### [Hands-On] Errors implementation
+#### [Theory] Deadlines
+- Deadlines allows clients to specify how long they are willing to wait for the RPC to complete
+  - When the deadline triggers, the RPC is terminated with the error DEADLINE_EXCEEDED
+- The gRPC documentation recommends setting a deadline for all client RPC calls 
+- Server should check if the deadline has been exceeded and cancel any remaining work.
+- Deadlines in Depth [https://grpc.io/blog/deadlines/](https://grpc.io/blog/deadlines/)
+- Deadlines propagates across chained gRPC calls
+  - This means that calls made to a microservice will propagate the deadline to all chained calls to other microservices 
