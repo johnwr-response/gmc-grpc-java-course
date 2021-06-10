@@ -177,6 +177,7 @@
 #### Install MongoDB UI - Robo 3T
 #### Blog Service Java Setup
 #### CreateBlog Server
+#### CreateBlog Client
 
 ## Evans session log
 ```
