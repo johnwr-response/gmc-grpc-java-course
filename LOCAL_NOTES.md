@@ -156,3 +156,6 @@
 - Deadlines propagates across chained gRPC calls
   - This means that calls made to a microservice will propagate the deadline to all chained calls to other microservices 
 #### [Hands-On] Deadlines
+#### [Theory] SSL Security
+- All gRPC calls in production should be running with encryption using SSL certificates. This is the default behaviour.
+- gRPC support both 1-way verification (Encryption) and 2-way verification (Authentication)
