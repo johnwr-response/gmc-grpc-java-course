@@ -44,8 +44,17 @@ public class BlogServiceImpl extends BlogServiceGrpc.BlogServiceImplBase {
         log.info("Received Read Blog Request");
         var blogId = request.getBlogId();
         log.info("Searching for a blog");
-        var result = collection.find(Filters.eq("_id", new ObjectId(blogId)))
-                .first();
+        Document result = null;
+        try {
+            result = collection.find(Filters.eq("_id", new ObjectId(blogId))).first();
+        } catch (Exception e) {
+            responseObserver.onError(
+                    Status.NOT_FOUND
+                            .withDescription("The blog with the correspondnig id was not found")
+                            .augmentDescription(e.getLocalizedMessage())
+                            .asRuntimeException()
+            );
+        }
         if (result == null) {
             log.info("Blog not found");
             responseObserver.onError(

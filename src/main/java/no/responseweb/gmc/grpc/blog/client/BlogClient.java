@@ -3,11 +3,14 @@ package no.responseweb.gmc.grpc.blog.client;
 import com.proto.blog.Blog;
 import com.proto.blog.BlogServiceGrpc;
 import com.proto.blog.CreateBlogRequest;
+import com.proto.blog.ReadBlogRequest;
 import io.grpc.ManagedChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class BlogClient {
+    @SuppressWarnings("FieldCanBeLocal")
+    private static final boolean SEND_ERROR = false;
     public static void main(String[] args) {
         log.info("Hello I'm a gRPC Client for Blog");
         var main = new BlogClient();
@@ -26,5 +29,16 @@ public class BlogClient {
         var createResponse = blogClient.createBlog(CreateBlogRequest.newBuilder().setBlog(blog).build());
         log.info("Received create blog response");
         log.info(createResponse.toString());
+
+        var blogId = createResponse.getBlog().getId();
+        log.info("Reading blog...");
+        var readBlogResponse = blogClient.readBlog(ReadBlogRequest.newBuilder().setBlogId(blogId).build());
+        log.info(readBlogResponse.toString());
+
+        if (SEND_ERROR) {
+            log.info("Reading blog with non existing id...");
+            var readBlogResponseNotFound = blogClient.readBlog(ReadBlogRequest.newBuilder().setBlogId("60c23244b126be18750b6f21").build());
+            log.info(readBlogResponseNotFound.toString());
+        }
     }
 }
