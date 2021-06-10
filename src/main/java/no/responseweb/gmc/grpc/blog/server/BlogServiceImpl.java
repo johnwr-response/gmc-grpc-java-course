@@ -14,7 +14,7 @@ import org.bson.Document;
 @Slf4j
 public class BlogServiceImpl extends BlogServiceGrpc.BlogServiceImplBase {
 
-    private final MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+    private final MongoClient mongoClient = MongoClients.create("mongodb://root:example@localhost:27017");
     private final MongoDatabase database = mongoClient.getDatabase("myDb");
     private final MongoCollection<Document> collection = database.getCollection("blog");
 
