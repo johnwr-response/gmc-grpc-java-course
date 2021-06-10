@@ -139,3 +139,11 @@
 #### Bi-Directional Streaming API Server Implementation
 #### Bi-Directional Streaming API Client Implementation
 #### [Exercise/Solution] FindMaximum API
+
+### Section 9: [Hands-On] gRPC Advanced Features Deep
+#### [Theory] Errors in gRPC
+- Error codes
+  - [https://grpc.io/docs/guides/error/](https://grpc.io/docs/guides/error/)
+  - [https://avi.im/grpc-errors/](https://avi.im/grpc-errors/)
+  - Use metadata context to return extra information on top of an error code
+#### [Hands-On] Errors implementation
