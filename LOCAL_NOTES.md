@@ -162,3 +162,149 @@
 #### [Hands-On] SSL Security
 - [https://github.com/grpc/grpc-java/blob/master/SECURITY.md](https://github.com/grpc/grpc-java/blob/master/SECURITY.md)
 - [https://grpc.io/docs/guides/auth/](https://grpc.io/docs/guides/auth/)
+#### [Demo] Language Interoperability
+#### gRPC Reflection & Evans CLI
+- Two reasons
+  - Expose which endpoints are available
+  - Allow cli's to talk to server without having a preliminary .proto file
+- [gRPC Server Reflection Tutorial](https://github.com/grpc/grpc-java/blob/master/documentation/server-reflection-tutorial.md)
+- [Evans gRPC CLI](https://github.com/ktr0731/evans)
+- Command: `evans repl -r -p 50052` to start using evans
+- See log for Evans session below
+
+
+
+## Evans session log
+```
+PS C:\Users\John Håvard Wraalsen> evans --repl -r -p 50052
+
+  ______
+ |  ____|
+ | |__    __   __   __ _   _ __    ___
+ |  __|   ' ' / /  / _. | | '_ '  / __|
+ | |____   ' V /  | (_| | | | | | '__ ,
+ |______|   '_/    '__,_| |_| |_| |___/
+
+ more expressive universal gRPC client
+
+
+greet.CalculatorService@127.0.0.1:50052> show package
++-------------------------+
+|         PACKAGE         |
++-------------------------+
+| greet                   |
+| grpc.reflection.v1alpha |
++-------------------------+
+
+greet.CalculatorService@127.0.0.1:50052> package greet
+
+greet@127.0.0.1:50052> show package
++-------------------------+
+|         PACKAGE         |
++-------------------------+
+| greet                   |
+| grpc.reflection.v1alpha |
++-------------------------+
+
+greet@127.0.0.1:50052> show service
++-------------------+--------------------------+---------------------------------+----------------------------------+
+|      SERVICE      |           RPC            |          REQUEST TYPE           |          RESPONSE TYPE           |
++-------------------+--------------------------+---------------------------------+----------------------------------+
+| CalculatorService | Sum                      | SumRequest                      | SumResponse                      |
+| CalculatorService | PrimeNumberDecomposition | PrimeNumberDecompositionRequest | PrimeNumberDecompositionResponse |
+| CalculatorService | ComputeAverage           | ComputeAverageRequest           | ComputeAverageResponse           |
+| CalculatorService | FindMaximum              | FindMaximumRequest              | FindMaximumResponse              |
+| CalculatorService | SquareRoot               | SquareRootRequest               | SquareRootResponse               |
++-------------------+--------------------------+---------------------------------+----------------------------------+
+
+greet@127.0.0.1:50052> service CalculatorService
+
+greet.CalculatorService@127.0.0.1:50052> call Sum
+first_number (TYPE_INT32) => 4
+second_number (TYPE_INT32) => 2
+{
+  "sum_result": 6
+}
+
+greet.CalculatorService@127.0.0.1:50052> call ComputeAverage
+number (TYPE_INT32) => 4
+number (TYPE_INT32) => 6
+number (TYPE_INT32) => 8
+number (TYPE_INT32) => 2
+number (TYPE_INT32) =>
+{
+  "average": 5
+}
+
+greet.CalculatorService@127.0.0.1:50052> call FindMaximum
+number (TYPE_INT32) => 4
+number (TYPE_INT32) => {
+  "maximum": 4
+}
+number (TYPE_INT32) => 6
+number (TYPE_INT32) => {
+  "maximum": 6
+}
+number (TYPE_INT32) => 3
+number (TYPE_INT32) => 22
+number (TYPE_INT32) => {
+  "maximum : 22
+}
+number (TYPE_INT32) => 3
+number (TYPE_INT32) => 5
+number (TYPE_INT32) => 21
+number (TYPE_INT32) => 23
+number (TYPE_INT32) {
+  "maximum": 23
+}
+number (TYPE_INT32) =>
+{
+  "maximum": 23
+}
+
+greet.CalculatorService@127.0.0.1:50052> call PrimeNumberDecomposition
+number (TYPE_INT32) => 25252525252
+command call: failed to set inputted values to message 'greet.PrimeNumberDecompositionRequest': failed to convert an inputted value '25252525252' to type TYPE_INT32: strconv.ParseInt: parsing "25252525252": value out of range
+
+greet.CalculatorService@127.0.0.1:50052> call PrimeNumberDecomposition
+number (TYPE_INT32) => 25554
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 3
+}
+{
+  "prime_factor": 4259
+}
+
+greet.CalculatorService@127.0.0.1:50052> call PrimeNumberDecomposition
+number (TYPE_INT32) => 256
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 2
+}
+{
+  "prime_factor": 2
+}
+
+greet.CalculatorService@127.0.0.1:50052>
+
+```
