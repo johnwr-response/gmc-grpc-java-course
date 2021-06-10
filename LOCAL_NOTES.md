@@ -172,7 +172,9 @@
 - Command: `evans repl -r -p 50052` to start using evans
 - See log for Evans session below
 
-
+### Section 10: [Hands-On] CRUD API with MongoDB
+#### Install MongoDB
+#### Install MongoDB UI - Robo 3T
 
 ## Evans session log
 ```
