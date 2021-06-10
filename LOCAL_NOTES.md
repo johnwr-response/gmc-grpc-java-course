@@ -175,6 +175,8 @@
 ### Section 10: [Hands-On] CRUD API with MongoDB
 #### Install MongoDB
 #### Install MongoDB UI - Robo 3T
+#### Blog Service Java Setup
+#### CreateBlog Server
 
 ## Evans session log
 ```
