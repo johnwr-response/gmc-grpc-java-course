@@ -178,6 +178,7 @@
 #### Blog Service Java Setup
 #### CreateBlog Server
 #### CreateBlog Client
+#### ReadBlog Server
 
 ## Evans session log
 ```
