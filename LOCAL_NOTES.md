@@ -155,3 +155,4 @@
 - Deadlines in Depth [https://grpc.io/blog/deadlines/](https://grpc.io/blog/deadlines/)
 - Deadlines propagates across chained gRPC calls
   - This means that calls made to a microservice will propagate the deadline to all chained calls to other microservices 
+#### [Hands-On] Deadlines
