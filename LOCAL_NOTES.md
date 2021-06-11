@@ -180,6 +180,7 @@
 #### CreateBlog Client
 #### ReadBlog Server
 #### ReadBlog Client
+#### UpdateBlog Server
 
 ## Evans session log
 ```
