@@ -186,8 +186,11 @@
 #### DeleteBlog Client
 #### ListBlog Server
 #### ListBlog Client
+#### Evans CLI test with CRUD
+- See log for Evans session below
 
-## Evans session log
+## Evans session logs
+### First session in gRPC reflection chapter
 ```
 PS C:\Users\John Håvard Wraalsen> evans --repl -r -p 50052
 
@@ -320,4 +323,143 @@ number (TYPE_INT32) => 256
 
 greet.CalculatorService@127.0.0.1:50052>
 
+```
+
+### second session in CRUD test section
+```
+PS C:\Users\John Håvard Wraalsen> evans --repl -r -p 50053
+
+  ______
+ |  ____|
+ | |__    __   __   __ _   _ __    ___
+ |  __|   ' ' / /  / _. | | '_ '  / __|
+ | |____   ' V /  | (_| | | | | | '__ ,
+ |______|   '_/    '__,_| |_| |_| |___/
+
+ more expressive universal gRPC client
+
+
+blog.BlogService@127.0.0.1:50053> show package
++-------------------------+
+|         PACKAGE         |
++-------------------------+
+| blog                    |
+| grpc.reflection.v1alpha |
++-------------------------+
+
+blog.BlogService@127.0.0.1:50053> package blog
+
+blog@127.0.0.1:50053> show service
++-------------+------------+-------------------+--------------------+
+|   SERVICE   |    RPC     |   REQUEST TYPE    |   RESPONSE TYPE    |
++-------------+------------+-------------------+--------------------+
+| BlogService | CreateBlog | CreateBlogRequest | CreateBlogResponse |
+| BlogService | ReadBlog   | ReadBlogRequest   | ReadBlogResponse   |
+| BlogService | UpdateBlog | UpdateBlogRequest | UpdateBlogResponse |
+| BlogService | DeleteBlog | DeleteBlogRequest | DeleteBlogResponse |
+| BlogService | ListBlog   | ListBlogRequest   | ListBlogResponse   |
++-------------+------------+-------------------+--------------------+
+
+blog@127.0.0.1:50053> service BlogService
+
+blog.BlogService@127.0.0.1:50053> show message
++--------------------+
+|      MESSAGE       |
++--------------------+
+| CreateBlogRequest  |
+| CreateBlogResponse |
+| DeleteBlogRequest  |
+| DeleteBlogResponse |
+| ListBlogRequest    |
+| ListBlogResponse   |
+| ReadBlogRequest    |
+| ReadBlogResponse   |
+| UpdateBlogRequest  |
+| UpdateBlogResponse |
++--------------------+
+
+blog.BlogService@127.0.0.1:50053> call CreateBlog
+blog::id (TYPE_STRING) =>
+blog::author_id (TYPE_STRING) => Joe
+blog::title (TYPE_STRING) => Some new Blog
+blog::content (TYPE_STRING) => Hoooray, and more
+{
+  "blog": {
+    "id": "60c37040ac33b52e4a268397",
+    "author_id": "Joe",
+    "title": "Some new Blog",
+    "content": "Hoooray, and more"
+  }
+}
+
+blog.BlogService@127.0.0.1:50053> call ReadBlog
+blog_id (TYPE_STRING) => 60c37040ac33b52e4a268397
+{
+  "blog": {
+    "id": "60c37040ac33b52e4a268397",
+    "author_id": "Joe",
+    "title": "Some new Blog",
+    "content": "Hoooray, and more"
+  }
+}
+
+blog.BlogService@127.0.0.1:50053> call ListBlog
+{
+  "blog": {
+    "id": "60c23337b126be18750b6f27",
+    "author_id": "John",
+    "title": "New blog!",
+    "content": "Hello world, this is my first blog!"
+  }
+}
+{
+  "blog": {
+    "id": "60c37040ac33b52e4a268397",
+    "author_id": "Joe",
+    "title": "Some new Blog",
+    "content": "Hoooray, and more"
+  }
+}
+
+blog.BlogService@127.0.0.1:50053> call DeleteBlog
+blog_id (TYPE_STRING) => 60c23337b126be18750b6f27
+{
+  "blog_id": "60c23337b126be18750b6f27"
+}
+
+blog.BlogService@127.0.0.1:50053> call ListBlog
+{
+  "blog": {
+    "id": "60c37040ac33b52e4a268397",
+    "author_id": "Joe",
+    "title": "Some new Blog",
+    "content": "Hoooray, and more"
+  }
+}
+
+blog.BlogService@127.0.0.1:50053> call UpdateBlog
+blog::id (TYPE_STRING) => 60c37040ac33b52e4a268397
+blog::author_id (TYPE_STRING) => Joe
+blog::title (TYPE_STRING) => Some new Blog (Updated)
+blog::content (TYPE_STRING) => Hooray, and much more!
+{
+  "blog": {
+    "id": "60c37040ac33b52e4a268397",
+    "author_id": "Joe",
+    "title": "Some new Blog (Updated)",
+    "content": "Hooray, and much more!"
+  }
+}
+
+blog.BlogService@127.0.0.1:50053> call ListBlog
+{
+  "blog": {
+    "id": "60c37040ac33b52e4a268397",
+    "author_id": "Joe",
+    "title": "Some new Blog (Updated)",
+    "content": "Hooray, and much more!"
+  }
+}
+
+blog.BlogService@127.0.0.1:50053>
 ```
