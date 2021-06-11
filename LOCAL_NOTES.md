@@ -196,6 +196,13 @@
   - [Google Spanner](https://github.com/googleapis/googleapis/blob/master/google/spanner/v1/spanner.proto)
 - Use comments extensively in the proto files
 - To offer this also as REST in addition to gRPC see [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway)
+#### Useful links
+- The gRPC project evolves really fast.
+- [gRPC community](https://grpc.io/community/)
+- [Awesome gRPC](https://github.com/grpc-ecosystem/awesome-grpc "A curated list of useful resources for gRPC")
+- [Documentation](https://grpc.io/docs/guides/)
+- [Great collection of projects](https://github.com/saturnism/grpc-by-example-java)
+- [Additional plugins](https://github.com/salesforce/grpc-java-contrib "Useful extensions for using the grpc-java library.")
 
 ## Evans session logs
 ### First session in gRPC reflection chapter
