@@ -182,6 +182,7 @@
 #### ReadBlog Client
 #### UpdateBlog Server
 #### UpdateBlog Client
+#### DeleteBlog Server
 
 ## Evans session log
 ```

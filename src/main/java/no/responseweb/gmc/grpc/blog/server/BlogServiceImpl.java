@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 import com.proto.blog.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -105,6 +106,38 @@ public class BlogServiceImpl extends BlogServiceGrpc.BlogServiceImplBase {
             responseObserver.onNext(UpdateBlogResponse.newBuilder().setBlog(documentToBlog(replacement)).build());
             responseObserver.onCompleted();
         }
+    }
+
+    @Override
+    public void deleteBlog(DeleteBlogRequest request, StreamObserver<DeleteBlogResponse> responseObserver) {
+        log.info("Received Delete Blog request");
+        var blogId = request.getBlogId();
+        DeleteResult result = null;
+        try {
+            result = collection.deleteOne(Filters.eq("_id", new ObjectId(blogId)));
+        } catch (Exception e) {
+            log.info("Blog not found");
+            responseObserver.onError(
+                    Status.NOT_FOUND
+                            .withDescription("The blog with the corresponding id was not found")
+                            .augmentDescription(e.getLocalizedMessage())
+                            .asRuntimeException()
+            );
+        }
+        if (result != null && result.getDeletedCount() == 0) {
+            log.info("Blog not found");
+            responseObserver.onError(
+                    Status.NOT_FOUND
+                            .withDescription("The blog with the corresponding id was not found")
+                            .asRuntimeException()
+            );
+        } else {
+            log.info("Blog was deleted");
+            responseObserver.onNext(DeleteBlogResponse.newBuilder().setBlogId(blogId).build());
+            responseObserver.onCompleted();
+
+        }
+
     }
 
     private Blog documentToBlog(Document document) {
