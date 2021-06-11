@@ -189,6 +189,14 @@
 #### Evans CLI test with CRUD
 - See log for Evans session below
 
+### Section 11: Next Steps
+#### gRPC Services in the Real Word
+- Google uses gRPC for its most important cloud services
+  - [Google Pub/Sub](https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto)
+  - [Google Spanner](https://github.com/googleapis/googleapis/blob/master/google/spanner/v1/spanner.proto)
+- Use comments extensively in the proto files
+- To offer this also as REST in addition to gRPC see [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway)
+
 ## Evans session logs
 ### First session in gRPC reflection chapter
 ```
