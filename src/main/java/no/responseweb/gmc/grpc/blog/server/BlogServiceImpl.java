@@ -95,10 +95,10 @@ public class BlogServiceImpl extends BlogServiceGrpc.BlogServiceImplBase {
                             .asRuntimeException()
             );
         } else {
-            Document replacement = new Document("author_id", blog.getAuthorId())
+            var replacement = new Document("author_id", blog.getAuthorId())
                     .append("title", blog.getTitle())
                     .append("content", blog.getContent())
-                    ;
+                    .append("_id", new ObjectId(blogId));
             log.info("Replacing blog in database");
             collection.replaceOne(Filters.eq("_id", result.getObjectId("_id")), replacement);
             log.info("Replaced! Sending blog as response");

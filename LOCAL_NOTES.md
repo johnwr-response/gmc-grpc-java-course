@@ -181,6 +181,7 @@
 #### ReadBlog Server
 #### ReadBlog Client
 #### UpdateBlog Server
+#### UpdateBlog Client
 
 ## Evans session log
 ```

@@ -1,9 +1,6 @@
 package no.responseweb.gmc.grpc.blog.client;
 
-import com.proto.blog.Blog;
-import com.proto.blog.BlogServiceGrpc;
-import com.proto.blog.CreateBlogRequest;
-import com.proto.blog.ReadBlogRequest;
+import com.proto.blog.*;
 import io.grpc.ManagedChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,5 +37,19 @@ public class BlogClient {
             var readBlogResponseNotFound = blogClient.readBlog(ReadBlogRequest.newBuilder().setBlogId("60c23244b126be18750b6f21").build());
             log.info(readBlogResponseNotFound.toString());
         }
+
+        var newBlog = Blog.newBuilder()
+                .setId(blogId)
+                .setAuthorId("Changed Author")
+                .setTitle("New blog! (updated)")
+                .setContent("Hello world, this is my first blog! I've added some more content.")
+                .build();
+
+        log.info("Updating blog...");
+        var updateBlogResponse = blogClient.updateBlog(UpdateBlogRequest.newBuilder().setBlog(newBlog).build());
+        log.info("Update blog");
+        log.info(updateBlogResponse.toString());
+
+
     }
 }
