@@ -185,6 +185,7 @@
 #### DeleteBlog Server
 #### DeleteBlog Client
 #### ListBlog Server
+#### ListBlog Client
 
 ## Evans session log
 ```

@@ -55,9 +55,16 @@ public class BlogClient {
                 DeleteBlogRequest.newBuilder().setBlogId(blogId).build()
         );
         log.info("Deleted blog");
-        log.info("Reading blog (Should not be found)...");
-        blogClient.readBlog(
-                ReadBlogRequest.newBuilder().setBlogId(blogId).build()
+        if (SEND_ERROR) {
+            log.info("Reading blog (Should not be found)...");
+            blogClient.readBlog(
+                    ReadBlogRequest.newBuilder().setBlogId(blogId).build()
+            );
+        }
+
+        log.info("Listing all blogs in our database");
+        blogClient.listBlog(ListBlogRequest.newBuilder().build()).forEachRemaining(
+                listBlogResponse -> log.info(listBlogResponse.toString())
         );
 
     }
