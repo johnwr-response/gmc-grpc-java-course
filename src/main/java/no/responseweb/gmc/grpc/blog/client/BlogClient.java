@@ -50,6 +50,15 @@ public class BlogClient {
         log.info("Update blog");
         log.info(updateBlogResponse.toString());
 
+        log.info("Deleting blog...");
+        blogClient.deleteBlog(
+                DeleteBlogRequest.newBuilder().setBlogId(blogId).build()
+        );
+        log.info("Deleted blog");
+        log.info("Reading blog (Should not be found)...");
+        blogClient.readBlog(
+                ReadBlogRequest.newBuilder().setBlogId(blogId).build()
+        );
 
     }
 }
